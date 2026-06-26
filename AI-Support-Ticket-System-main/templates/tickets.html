@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>All Tickets</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            padding:30px;
+            background:#f4f6f9;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#4CAF50;
+            color:white;
+            padding:12px;
+        }
+
+        td{
+            border:1px solid #ddd;
+            padding:10px;
+            text-align:center;
+        }
+
+        tr:nth-child(even){
+            background:#f2f2f2;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>📋 Ticket Database</h1>
+
+<table>
+
+<tr>
+
+    <th>ID</th>
+    <th>Ticket ID</th>
+    <th>Category</th>
+    <th>Priority</th>
+    <th>Confidence</th>
+    <th>Timestamp</th>
+    <th>Status</th>
+    <th>Action</th>
+
+</tr>
+
+{% for row in tickets %}
+
+<tr>
+
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+    <td>{{ row[5] }}</td>
+    <td>
+
+    <strong>{{ row[6] }}</strong>
+
+    <br><br>
+
+    <a href="/update-status/{{ row[0] }}/Open">
+        Open
+    </a>
+
+    |
+
+    <a href="/update-status/{{ row[0] }}/In Progress">
+        In Progress
+    </a>
+
+    |
+
+    <a href="/update-status/{{ row[0] }}/Resolved">
+        Resolved
+    </a>
+
+    |
+
+    <a href="/update-status/{{ row[0] }}/Closed">
+        Closed
+    </a>
+
+</td>
+    <td>
+
+    <a href="/delete/{{ row[0] }}">
+
+        🗑️ Delete
+
+    </a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">⬅ Back To Dashboard</a>
+
+</body>
+
+</html>

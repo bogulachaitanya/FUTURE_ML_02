@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+<br>
+
+<a href="/export-excel">
+
+    <button class="download-btn">
+        📊 Export Excel
+    </button>
+
+</a>
+<a href="/logout">
+
+    <button class="download-btn">
+        🚪 Logout
+    </button>
+
+</a>
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+            padding:30px;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0px 2px 10px rgba(0,0,0,.1);
+            text-align:center;
+        }
+
+        .value{
+            font-size:32px;
+            font-weight:bold;
+            color:#4CAF50;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>📊 Admin Analytics Dashboard</h1>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>Total Tickets</h3>
+        <div class="value">{{ total }}</div>
+    </div>
+
+    <div class="card">
+        <h3>Critical Tickets</h3>
+        <div class="value">{{ critical }}</div>
+    </div>
+
+    <div class="card">
+        <h3>Open Tickets</h3>
+        <div class="value">{{ open_count }}</div>
+    </div>
+
+    <div class="card">
+        <h3>In Progress</h3>
+        <div class="value">{{ in_progress }}</div>
+    </div>
+
+    <div class="card">
+        <h3>Resolved</h3>
+        <div class="value">{{ resolved }}</div>
+    </div>
+
+    <div class="card">
+        <h3>Closed</h3>
+        <div class="value">{{ closed }}</div>
+    </div>
+
+    <div class="card">
+        <h3>Top Category</h3>
+        <div class="value">
+            {{ top_category[0] }}
+        </div>
+    </div>
+
+</div>
+
+<br>
+
+<a href="/">⬅ Back To Dashboard</a>
+
+</body>
+</html>

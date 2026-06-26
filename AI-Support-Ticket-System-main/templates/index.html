@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>AI Support Ticket Intelligence</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<hr class="divider">
+<body>
+    <button onclick="toggleTheme()" id="themeBtn">
+    🌙 Dark Mode
+</button>
+
+<div class="dashboard">
+
+    <div class="card">
+        <h3>Total Tickets</h3>
+        <p>{{ total_tickets }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Billing</h3>
+        <p>{{ billing_count }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Account</h3>
+        <p>{{ account_count }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Technical</h3>
+        <p>{{ technical_count }}</p>
+    </div>
+
+    <div class="card">
+        <h3>General Query</h3>
+        <p>{{ general_count }}</p>
+    </div>
+    <div class="card">
+    <h3>Tickets Analyzed</h3>
+    <p>{{ analyzed_count }}</p>
+    </div>
+    <div class="card">
+    <h3>🏆 Top Category</h3>
+    <p>{{ most_common_category }}</p>
+    <small>{{ category_percentage }}%</small>
+    </div>
+    <div class="card">
+    <h3>🔥 Critical Tickets</h3>
+    <p>{{ critical_count }}</p>
+    </div>
+
+</div>
+<div class="card">
+
+    <h3>🔍 Search Ticket History</h3>
+
+    <form action="/search" method="POST">
+
+        <input
+            type="text"
+            name="keyword"
+            placeholder="Billing, Account..."
+            required
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</div>
+<a href="/tickets">
+
+    <button class="btn">
+
+        📋 View All Tickets
+
+    </button>
+
+</a>
+<div class="container">
+
+    <div class="header">
+
+        <h1>🤖 AI Support Ticket Intelligence</h1>
+
+        <p>
+            Classify and prioritize support tickets
+            using Machine Learning
+        </p>
+
+    </div>
+
+    <form method="POST">
+
+        <textarea
+            name="ticket"
+            placeholder="Enter customer support ticket here..."
+            required></textarea>
+
+        <button class="btn" type="submit">
+            Analyze Ticket
+        </button>
+
+    </form>
+
+    {% if category %}
+
+    <div class="result-card">
+
+        <h2>📊 Analysis Result</h2>
+
+        <div class="result-item">
+            <strong>Ticket ID:</strong>
+            {{ ticket_id }}
+        </div>
+
+        <div class="result-item">
+            <strong>Category:</strong>
+            {{ category_icon }} {{ category }}
+        </div>
+
+        <div class="result-item">
+
+    <strong>Confidence:</strong>
+
+    <div class="progress-bar">
+
+        <div
+    class="progress-fill"
+    style="
+        width: {{ confidence }}%;
+        background: {{ confidence_color }};
+    ">
+</div>
+    </div>
+
+    <p>{{ confidence }}%</p>
+
+     </div>
+
+        <div class="result-item">
+
+    <strong>Priority:</strong>
+
+    {% if priority == "Critical" %}
+        <span class="priority-critical">🔥 Critical</span>
+
+    {% elif priority == "High" %}
+        <span class="priority-high">High</span>
+
+    {% elif priority == "Medium" %}
+        <span class="priority-medium">Medium</span>
+
+    {% else %}
+        <span class="priority-low">Low</span>
+
+    {% endif %}
+
+</div>
+
+        <div class="result-item">
+            <strong>Analyzed At:</strong>
+            {{ timestamp }}
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    {% if history %}
+
+    <div class="result-card">
+
+        <h2>📝 Recent Analyses</h2>
+
+        <a href="/download-report">
+
+    <button class="download-btn">
+
+        📥 Download Report
+
+    </button>
+
+</a>
+
+       <table class="history-table">
+
+    <tr>
+        <th>Ticket ID</th>
+        <th>Category</th>
+        <th>Priority</th>
+    </tr>
+
+    {% for item in history %}
+
+    <tr>
+
+        <td>{{ item.ticket_id }}</td>
+
+        <td>{{ item.category }}</td>
+
+        <td>{{ item.priority }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+    </div>
+
+    {% endif %}
+
+    <div class="footer">
+        Powered by TF-IDF + Naive Bayes Machine Learning Model
+    </div>
+
+</div>
+
+<div class="result-card">
+
+    <h2>📊 Category Distribution</h2>
+
+    <img
+        src="{{ url_for('static', filename='category_chart.png') }}"
+        class="chart-image">
+</div>
+
+<div class="result-card">
+
+    <h2>🚨 Priority Distribution</h2>
+
+    <img
+        src="{{ url_for('static', filename='priority_chart.png') }}"
+        class="chart-image">
+
+</div>
+
+<div class="chart-card">
+
+    <h2>📈 Ticket Activity Trend</h2>
+
+    <img
+        src="{{ url_for('static',
+        filename='trend_chart.png') }}"
+        width="30%"
+    >
+
+</div>
+
+<div class="result-card">
+
+    <h2>🤖 Model Performance</h2>
+
+    <div class="result-item">
+        <strong>Algorithm:</strong>
+        TF-IDF + Multinomial Naive Bayes
+    </div>
+
+    <div class="result-item">
+        <strong>Accuracy:</strong>
+        {{ model_accuracy }}%
+    </div>
+
+    <div class="result-item">
+        <strong>Dataset Size:</strong>
+        {{ dataset_size }} Tickets
+    </div>
+
+</div>
+
+<script>
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark-mode");
+
+}
+
+</script>
+
+</body>
+</html>

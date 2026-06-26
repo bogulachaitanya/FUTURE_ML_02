@@ -1,0 +1,56 @@
+ticket_text,category,priority
+Payment deducted twice,Billing,High
+Need refund for subscription,Billing,High
+Charged incorrectly on my card,Billing,High
+Invoice not received after payment,Billing,Medium
+Subscription renewed without permission,Billing,High
+Refund taking too long,Billing,Medium
+Incorrect amount charged,Billing,High
+Payment failed but money deducted,Billing,High
+Need GST invoice copy,Billing,Low
+Unable to update billing information,Billing,Medium
+Duplicate transaction recorded,Billing,High
+Monthly charge seems incorrect,Billing,Medium
+Need receipt for recent payment,Billing,Low
+
+Unable to login to account,Account,Medium
+Forgot my password,Account,Medium
+Account locked after multiple attempts,Account,High
+Password reset link not working,Account,Medium
+Email verification not received,Account,Medium
+Unable to update profile details,Account,Low
+Two-factor authentication failed,Account,High
+Username not recognized,Account,Medium
+Cannot access account settings,Account,Medium
+Account suspended unexpectedly,Account,High
+Unable to change registered email,Account,Low
+Security code not received,Account,Medium
+Profile picture not updating,Account,Low
+
+Website not loading,Technical,High
+Application crashes on startup,Technical,High
+Error while uploading files,Technical,Medium
+Server is down,Technical,High
+Website crashes during checkout,Technical,High
+Unable to connect to database,Technical,High
+Slow loading dashboard,Technical,Medium
+Mobile app freezes frequently,Technical,High
+Internal server error displayed,Technical,High
+Search functionality not working,Technical,Medium
+API returning error code 500,Technical,High
+Unable to download reports,Technical,Medium
+Video playback not working,Technical,Medium
+
+How to update profile,General Query,Low
+Where can I change my email address,General Query,Low
+Need information about plans,General Query,Low
+How to upgrade subscription plan,General Query,Low
+What payment methods are accepted,General Query,Low
+How to contact customer support,General Query,Low
+Need details about premium features,General Query,Low
+Where can I view invoices,General Query,Low
+How to cancel subscription,General Query,Low
+Can I change my username,General Query,Low
+Where are account settings located,General Query,Low
+How do I download the mobile app,General Query,Low
+Need help understanding pricing,General Query,Low

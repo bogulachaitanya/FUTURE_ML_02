@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+
+<h1>🔍 Search Results</h1>
+
+<h3>Keyword: {{ keyword }}</h3>
+
+{% if results %}
+
+<table border="1">
+
+<tr>
+    <th>Ticket ID</th>
+    <th>Category</th>
+    <th>Priority</th>
+</tr>
+
+{% for row in results %}
+
+<tr>
+    <td>{{ row["Ticket ID"] }}</td>
+    <td>{{ row["Category"] }}</td>
+    <td>{{ row["Priority"] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No matching records found.</p>
+
+{% endif %}
+
+<br>
+
+<a href="/">⬅ Back To Dashboard</a>
+
+</body>
+</html>
